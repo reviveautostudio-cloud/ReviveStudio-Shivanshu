@@ -219,32 +219,6 @@ const Home = () => {
       }
 
 
-      // // Brand Section
-
-      // const brandItems = brandWeServeRef.current.querySelectorAll(".brand-item");
-
-      // gsap.fromTo(
-      //   brandItems,
-      //   { x: 100, opacity: 0, filter: "blur(10px)" }, // right se aayenge
-      //   {
-      //     x: 0,
-      //     opacity: 1,
-      //     filter: "blur(0px)",
-      //     duration: 0.5,
-      //     ease: "power2.out",
-      //     stagger: 0.2, // ek ek karke aayenge
-      //     scrollTrigger: {
-      //       trigger: brandWeServeRef.current,
-      //       start: "top 80%",
-      //       toggleActions: "play none none none",
-      //     },
-      //   }
-      // );
-
-
-
-      // Why Choose Us Section
-
       // Booking Form Section
       gsap.fromTo(
         "#booking form, #booking > div:first-child",
@@ -342,7 +316,7 @@ const Home = () => {
     {
       title: "ENGINE DIAGNOSTICS & REPAIR",
       description:
-        "We use advanced tools to identify engine issues quickly and fix them to keep your car performing at its best.",
+        "We use advanced tools to identify engine issues and fix them to keep your car performing best.",
       image: service2,
       link: '/service2'
     },
@@ -358,12 +332,12 @@ const Home = () => {
       description:
         "From exterior shine to interior cleaning, we make your car look and feel brand new.",
       image: service4,
-      link: '/service4'
+      link: '/service4'    
     },
     {
       title: "TRANSMISSION",
       description:
-        "Keep your car’s gears running like new with transmission care. We diagnose and repair for smooth shifts.",
+        "Keep your car’s gears running like new with transmission care. We repair smooth shifts.",
       image: service5,
       link: '/service5'
     },
