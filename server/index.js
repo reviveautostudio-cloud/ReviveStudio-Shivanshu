@@ -4,7 +4,11 @@ const app =express();
 const cors=require("cors");
 require("dotenv").config();
 const contactRouter=require('./App/Route/contact.route');
-app.use(cors());
+app.use(cors({
+  origin: "https://revive-studio-shivanshu.vercel.app/", // replace with your actual Vercel URL
+  methods: ["GET", "POST", "PUT", "DELETE"],
+}));
+
 app.use(express.json());
 
 
