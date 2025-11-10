@@ -74,15 +74,13 @@ const Navbar = () => {
           {/* Social Icons */}
           <div className="flex-1 flex justify-end items-center">
             <div className="hidden lg:flex gap-4 items-center text-black text-lg">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.facebook.com/reviveauto.hyderabad" target="_blank" rel="noopener noreferrer">
                 <FaFacebookF className="hover:text-red-600 transition" />
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.instagram.com/reviveauto.hyderabad/" target="_blank" rel="noopener noreferrer">
                 <FaInstagram className="hover:text-red-600 transition" />
               </a>
-              <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">
-                <FaYoutube className="hover:text-red-600 transition" />
-              </a>
+             
             </div>
           </div>
         </div>

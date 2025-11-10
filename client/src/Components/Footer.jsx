@@ -41,7 +41,7 @@ const Footer = () => {
 
     {/* Social Icons */}
     <div className="hidden md:flex space-x-4 relative z-10">
-      <a href="#" target="_blank" rel="noopener noreferrer">
+      <a href="https://www.facebook.com/reviveauto.hyderabad" target="_blank" rel="noopener noreferrer">
         <FaFacebookF className="text-black hover:text-red-600 cursor-pointer" />
       </a>
       <a
@@ -51,9 +51,7 @@ const Footer = () => {
       >
         <FaInstagram className="text-black hover:text-red-600 cursor-pointer" />
       </a>
-      <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">
-        <FaYoutube className="text-black hover:text-red-600 cursor-pointer" />
-      </a>
+    
     </div>
   </div>
 </div>
