@@ -304,12 +304,12 @@ const Home = () => {
   const services = [
     {
       title: "VAG CODING VIA VCDS",
-     
-        // "Unlock hidden features and optimize performance with our expert VAG Coding via VCDS service.",
-            shortDescription: "Unlock hidden features and optimize performance with our expert VAG Coding via VCDS service.",
-    longDescription: "Unlock hidden features and optimize performance with our expert VAG Coding via VCDS service, quickly, safely, and with complete precision every time.",
 
-        description: "Unlock hidden features and optimize performance with our expert VAG Coding via VCDS service, quickly, safely, and with complete precision every time.",
+      // "Unlock hidden features and optimize performance with our expert VAG Coding via VCDS service.",
+      shortDescription: "Unlock hidden features and optimize performance with our expert VAG Coding via VCDS service.",
+      longDescription: "Unlock hidden features and optimize performance with our expert VAG Coding via VCDS service, quickly, safely, and with complete precision every time.",
+
+      description: "Unlock hidden features and optimize performance with our expert VAG Coding via VCDS service, quickly, safely, and with complete precision every time.",
       image: service1,
       link: '/service1'
     },
@@ -332,7 +332,7 @@ const Home = () => {
       description:
         "From exterior shine to interior cleaning, we make your car look and feel brand new.",
       image: service4,
-      link: '/service4'    
+      link: '/service4'
     },
     {
       title: "TRANSMISSION",
@@ -351,60 +351,60 @@ const Home = () => {
   ];
 
   // brand we serve
-const brand = [
-  { src: audi, name: "Audi" },
-  { src: jaguar, name: "Jaguar" },
-  { src: mercedes, name: "Mercedes" },
-  { src: hyundai, name: "Hyundai" },
-  { src: mahindra, name: "Mahindra" },
-  { src: honda, name: "Honda" },
-  { src: ford, name: "Ford" },
-  { src: bmw, name: "BMW" },
-  { src: lambo, name: "Lamborghini" },
-  { src: renault, name: "Renault" },
-  { src: jeep, name: "Jeep" },
-  { src: tata, name: "Tata" },
-  { src: rolls, name: "Rolls Royce" },
-  { src: nissan, name: "Nissan" },
-  { src: suzuki, name: "Suzuki" },
-  { src: tesla, name: "Tesla" },
-  { src: chev, name: "Chevrolet" },
-  { src: eicher, name: "Eicher" },
-  { src: ferrari, name: "Ferrari" },
-  { src: kia, name: "Kia" },
-  { src: isuzu, name: "Isuzu" },
-  { src: landRover, name: "Land Rover" },
-  { src: mg, name: "MG" },
-  { src: mitsubishi, name: "Mitsubishi" },
-  { src: porsche, name: "Porsche" },
-  { src: skoda, name: "Skoda" },
-  { src: toyota, name: "Toyota" },
-  { src: volkswagen, name: "Volkswagen" },
-];
+  const brand = [
+    { src: audi, name: "Audi" },
+    { src: jaguar, name: "Jaguar" },
+    { src: mercedes, name: "Mercedes" },
+    { src: hyundai, name: "Hyundai" },
+    { src: mahindra, name: "Mahindra" },
+    { src: honda, name: "Honda" },
+    { src: ford, name: "Ford" },
+    { src: bmw, name: "BMW" },
+    { src: lambo, name: "Lamborghini" },
+    { src: renault, name: "Renault" },
+    { src: jeep, name: "Jeep" },
+    { src: tata, name: "Tata" },
+    { src: rolls, name: "Rolls Royce" },
+    { src: nissan, name: "Nissan" },
+    { src: suzuki, name: "Suzuki" },
+    { src: tesla, name: "Tesla" },
+    { src: chev, name: "Chevrolet" },
+    { src: eicher, name: "Eicher" },
+    { src: ferrari, name: "Ferrari" },
+    { src: kia, name: "Kia" },
+    { src: isuzu, name: "Isuzu" },
+    { src: landRover, name: "Land Rover" },
+    { src: mg, name: "MG" },
+    { src: mitsubishi, name: "Mitsubishi" },
+    { src: porsche, name: "Porsche" },
+    { src: skoda, name: "Skoda" },
+    { src: toyota, name: "Toyota" },
+    { src: volkswagen, name: "Volkswagen" },
+  ];
 
   // ---- STATE + LOGIC ----
-const [topBrands, setTopBrands] = useState([]);
-const [visibleBrands, setVisibleBrands] = useState([]);
+  const [topBrands, setTopBrands] = useState([]);
+  const [visibleBrands, setVisibleBrands] = useState([]);
 
-const updateVisibleItems = () => {
-  const total = brand.length;
-  const half = Math.ceil(total / 2); // split equally
+  const updateVisibleItems = () => {
+    const total = brand.length;
+    const half = Math.ceil(total / 2); // split equally
 
-  const topPart = brand.slice(0, half);
-  const bottomPart = brand.slice(half);
+    const topPart = brand.slice(0, half);
+    const bottomPart = brand.slice(half);
     // Double each list to make scrolling seamless
-  setTopBrands([...topPart, ...topPart]);
-  setVisibleBrands([...bottomPart, ...bottomPart]);
+    setTopBrands([...topPart, ...topPart]);
+    setVisibleBrands([...bottomPart, ...bottomPart]);
 
-  // setTopBrands(topPart);
-  // setVisibleBrands(bottomPart);
-};
+    // setTopBrands(topPart);
+    // setVisibleBrands(bottomPart);
+  };
 
-useEffect(() => {
-  updateVisibleItems();
-  window.addEventListener("resize", updateVisibleItems);
-  return () => window.removeEventListener("resize", updateVisibleItems);
-}, []);
+  useEffect(() => {
+    updateVisibleItems();
+    window.addEventListener("resize", updateVisibleItems);
+    return () => window.removeEventListener("resize", updateVisibleItems);
+  }, []);
 
 
 
@@ -587,9 +587,11 @@ useEffect(() => {
     setLoading(true);
 
     try {
+      // console.log("Submitting form data:", formData);
       const response = await Api.createContact(formData);
+      // console.log("Response:", response);
 
-      if (response.status === 200) {
+      if (response.status === 200 || response.status === 201) {
         toast.success("Message Submitted Successfully", {
           position: "bottom-right",
           style: {
@@ -693,45 +695,45 @@ useEffect(() => {
   };
 
   // Auto-scroll effect for top and bottom rows
-useEffect(() => {
-  let scrollIntervalTop;
-  let scrollIntervalBottom;
+  useEffect(() => {
+    let scrollIntervalTop;
+    let scrollIntervalBottom;
 
-  const startAutoScroll = () => {
-    const topSlider = scrollRefTop.current;
-    const bottomSlider = scrollRefBottom.current;
+    const startAutoScroll = () => {
+      const topSlider = scrollRefTop.current;
+      const bottomSlider = scrollRefBottom.current;
 
-    if (!topSlider || !bottomSlider) return;
+      if (!topSlider || !bottomSlider) return;
 
-    // --- TOP ROW: Left → Right ---
-    scrollIntervalTop = setInterval(() => {
-      topSlider.scrollLeft += 1;
+      // --- TOP ROW: Left → Right ---
+      scrollIntervalTop = setInterval(() => {
+        topSlider.scrollLeft += 1;
 
-      // if reached half of the doubled content → reset smoothly
-      if (topSlider.scrollLeft >= topSlider.scrollWidth / 2) {
-        topSlider.scrollLeft = 0;
-      }
-    }, 16); // 60 FPS
+        // if reached half of the doubled content → reset smoothly
+        if (topSlider.scrollLeft >= topSlider.scrollWidth / 2) {
+          topSlider.scrollLeft = 0;
+        }
+      }, 16); // 60 FPS
 
-    // --- BOTTOM ROW: Right → Left ---
-    scrollIntervalBottom = setInterval(() => {
-      bottomSlider.scrollLeft -= 1;
+      // --- BOTTOM ROW: Right → Left ---
+      scrollIntervalBottom = setInterval(() => {
+        bottomSlider.scrollLeft -= 1;
 
-      // when reaching start → reset to halfway mark
-      if (bottomSlider.scrollLeft <= 0) {
-        bottomSlider.scrollLeft = bottomSlider.scrollWidth / 2;
-      }
-    }, 16);
-  };
+        // when reaching start → reset to halfway mark
+        if (bottomSlider.scrollLeft <= 0) {
+          bottomSlider.scrollLeft = bottomSlider.scrollWidth / 2;
+        }
+      }, 16);
+    };
 
-  startAutoScroll();
+    startAutoScroll();
 
-  // Clean up on unmount
-  return () => {
-    clearInterval(scrollIntervalTop);
-    clearInterval(scrollIntervalBottom);
-  };
-}, [topBrands, visibleBrands]);
+    // Clean up on unmount
+    return () => {
+      clearInterval(scrollIntervalTop);
+      clearInterval(scrollIntervalBottom);
+    };
+  }, [topBrands, visibleBrands]);
 
 
 
@@ -911,49 +913,49 @@ useEffect(() => {
 
             {/* Swiper Carousel */}
             <div className="py-6 px-6 md:px-12 mt-2 relative">
-            <Swiper
-  modules={[Pagination, Navigation]}
-  spaceBetween={20}
-  slidesPerView={1}
-  pagination={{ clickable: true }}
-  navigation={{
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  }}
-  breakpoints={{
-    640: {
-      slidesPerView: 2,
-    },
-    1024: {
-      slidesPerView: 3,
-    },
-  }}
-  className="!pb-10"
->
-{services.map((service, index) => (
-  <SwiperSlide key={index} className="flex">
-    <Link to={service.link} state={{ from: "services" }}>
-      <div className="bg-white w-full rounded-2xl shadow-xl overflow-hidden flex flex-col h-full">
-        <img
-          src={service.image}
-          alt={service.title}
-          className="w-full h-52 md:h-60 lg:h-72 object-cover"
-        />
-        <div className="p-6 flex flex-col flex-grow justify-between">
-          <h3 className="text-xl font-semibold text-black mb-2">{service.title}</h3>
-          <p className="text-gray-600 text-sm md:text-base leading-snug">
-            {service.shortDescription && service.longDescription
-              ? window.innerWidth >= 780                ? service.shortDescription // Desktop
-                : service.longDescription // Mobile/Tablet
-              : service.description}
-          </p>
-        </div>
-      </div>
-    </Link>
-  </SwiperSlide>
-))}
+              <Swiper
+                modules={[Pagination, Navigation]}
+                spaceBetween={20}
+                slidesPerView={1}
+                pagination={{ clickable: true }}
+                navigation={{
+                  nextEl: ".swiper-button-next",
+                  prevEl: ".swiper-button-prev",
+                }}
+                breakpoints={{
+                  640: {
+                    slidesPerView: 2,
+                  },
+                  1024: {
+                    slidesPerView: 3,
+                  },
+                }}
+                className="!pb-10"
+              >
+                {services.map((service, index) => (
+                  <SwiperSlide key={index} className="flex">
+                    <Link to={service.link} state={{ from: "services" }}>
+                      <div className="bg-white w-full rounded-2xl shadow-xl overflow-hidden flex flex-col h-full">
+                        <img
+                          src={service.image}
+                          alt={service.title}
+                          className="w-full h-52 md:h-60 lg:h-72 object-cover"
+                        />
+                        <div className="p-6 flex flex-col flex-grow justify-between">
+                          <h3 className="text-xl font-semibold text-black mb-2">{service.title}</h3>
+                          <p className="text-gray-600 text-sm md:text-base leading-snug">
+                            {service.shortDescription && service.longDescription
+                              ? window.innerWidth >= 780 ? service.shortDescription // Desktop
+                                : service.longDescription // Mobile/Tablet
+                              : service.description}
+                          </p>
+                        </div>
+                      </div>
+                    </Link>
+                  </SwiperSlide>
+                ))}
 
-</Swiper>
+              </Swiper>
 
             </div>
 
@@ -1007,67 +1009,67 @@ useEffect(() => {
 
         {/* Brand We Serve  */}
 
-<section className="w-[90%] mx-auto md:mt-[80px] mb-18 md:mb-8 py-6" id="brand-item">
-  <h1 className="text-center text-xl md:text-2xl font-medium mb-10 md:mb-15">
-    Brands We Serve
-  </h1>
+        <section className="w-[90%] mx-auto md:mt-[80px] mb-18 md:mb-8 py-6" id="brand-item">
+          <h1 className="text-center text-xl md:text-2xl font-medium mb-10 md:mb-15">
+            Brands We Serve
+          </h1>
 
-  {/* --- Top Row --- */}
-  <div
-    ref={scrollRefTop}
-    onMouseDown={handleMouseDown(scrollRefTop)}
-    onMouseLeave={handleMouseLeave(scrollRefTop)}
-    onMouseUp={handleMouseUp(scrollRefTop)}
-    onMouseMove={handleMouseMove(scrollRefTop, false)}
-    className="w-full overflow-x-auto cursor-grab active:cursor-grabbing scrollbar-hide select-none"
-  >
-    <div className="flex gap-8 w-max px-4">
-      {topBrands.map((brand, index) => (
-        <div
-          key={index}
-          className="flex-shrink-0 w-32 md:w-40 flex flex-col items-center text-center"
-        >
-          <img
-            src={brand.src}
-            alt={brand.name}
-            className="w-14 md:w-24 h-auto hover:scale-110 transition-transform duration-300"
-            draggable={false}
-          />
-          <p className="mt-2 text-sm md:text-base">{brand.name}</p>
-        </div>
-      ))}
-    </div>
-  </div>
+          {/* --- Top Row --- */}
+          <div
+            ref={scrollRefTop}
+            onMouseDown={handleMouseDown(scrollRefTop)}
+            onMouseLeave={handleMouseLeave(scrollRefTop)}
+            onMouseUp={handleMouseUp(scrollRefTop)}
+            onMouseMove={handleMouseMove(scrollRefTop, false)}
+            className="w-full overflow-x-auto cursor-grab active:cursor-grabbing scrollbar-hide select-none"
+          >
+            <div className="flex gap-8 w-max px-4">
+              {topBrands.map((brand, index) => (
+                <div
+                  key={index}
+                  className="flex-shrink-0 w-32 md:w-40 flex flex-col items-center text-center"
+                >
+                  <img
+                    src={brand.src}
+                    alt={brand.name}
+                    className="w-14 md:w-24 h-auto hover:scale-110 transition-transform duration-300"
+                    draggable={false}
+                  />
+                  <p className="mt-2 text-sm md:text-base">{brand.name}</p>
+                </div>
+              ))}
+            </div>
+          </div>
 
-  {/* --- Bottom Row --- */}
-  <div
-    ref={scrollRefBottom}
-    onMouseDown={handleMouseDown(scrollRefBottom)}
-    onMouseLeave={handleMouseLeave(scrollRefBottom)}
-    onMouseUp={handleMouseUp(scrollRefBottom)}
-    onMouseMove={handleMouseMove(scrollRefBottom, true)}
-    className="w-full overflow-x-auto cursor-grab active:cursor-grabbing scrollbar-hide select-none mt-10"
-  >
-    <div className="flex gap-8 w-max px-4">
-      {visibleBrands.map((brand, index) => (
-        <div
-          key={index}
-          className="flex-shrink-0 w-32 md:w-40 flex flex-col items-center text-center"
-        >
-          <img
-            src={brand.src}
-            alt={brand.name}
-            className="w-14 md:w-24 h-auto hover:scale-110 transition-transform duration-300"
-            draggable={false}
-          />
-          <p className="mt-2 text-sm md:text-base">{brand.name}</p>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
+          {/* --- Bottom Row --- */}
+          <div
+            ref={scrollRefBottom}
+            onMouseDown={handleMouseDown(scrollRefBottom)}
+            onMouseLeave={handleMouseLeave(scrollRefBottom)}
+            onMouseUp={handleMouseUp(scrollRefBottom)}
+            onMouseMove={handleMouseMove(scrollRefBottom, true)}
+            className="w-full overflow-x-auto cursor-grab active:cursor-grabbing scrollbar-hide select-none mt-10"
+          >
+            <div className="flex gap-8 w-max px-4">
+              {visibleBrands.map((brand, index) => (
+                <div
+                  key={index}
+                  className="flex-shrink-0 w-32 md:w-40 flex flex-col items-center text-center"
+                >
+                  <img
+                    src={brand.src}
+                    alt={brand.name}
+                    className="w-14 md:w-24 h-auto hover:scale-110 transition-transform duration-300"
+                    draggable={false}
+                  />
+                  <p className="mt-2 text-sm md:text-base">{brand.name}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
-    
+
         {/* // Latest Project  */}
         <section className="w-[100%] md:mt-[150px] py-12 bg-gray-400 scroll-mt-18" ref={galleryRef} id='gallery'>
           <div>
@@ -1310,48 +1312,48 @@ useEffect(() => {
           </div>
         </section>
 
-             {/* // for mobile contact  */}
-     <section className="w-[90%] bg-[#FFEEEE] py-9 mx-auto md:hidden p-4">
-  <div className="space-y-8 flex flex-col justify-center items-center">
-    {/* Customer Support */}
-    <div className="flex flex-col justify-center items-center">
-      <FaEnvelope className="text-3xl mb-2" /> {/* increased size */}
-      <h1 className="text-xl font-semibold mb-2">Customer Support</h1>
-      <p className="text-gray-700 text-center">
-        Our customer support team is ready to assist you with any questions or concerns. Whether you need help with buying, selling, or trading a car, we're here to provide quick and reliable solutions.
-      </p>
-    </div>
+        {/* // for mobile contact  */}
+        <section className="w-[90%] bg-[#FFEEEE] py-9 mx-auto md:hidden p-4">
+          <div className="space-y-8 flex flex-col justify-center items-center">
+            {/* Customer Support */}
+            <div className="flex flex-col justify-center items-center">
+              <FaEnvelope className="text-3xl mb-2" /> {/* increased size */}
+              <h1 className="text-xl font-semibold mb-2">Customer Support</h1>
+              <p className="text-gray-700 text-center">
+                Our customer support team is ready to assist you with any questions or concerns. Whether you need help with buying, selling, or trading a car, we're here to provide quick and reliable solutions.
+              </p>
+            </div>
 
-    {/* Location */}
-<a
-  href="https://www.google.com/maps?q=Revive+Auto+Studio+and+Garage,+Plot+no+11+12,+Suffah+Colony+Rd,+opp.+Wipro+Campus+Road,+Journalists+Colony+Phase+3,+Phase+3,+Gachibowli,+Gopanpalle,+Hyderabad,+Telangana+500075"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="flex flex-col justify-center items-center text-center hover:text-blue-600 transition"
->
-  <FaMapMarkerAlt className="text-3xl mb-2" />
-  <h1 className="text-xl font-semibold mb-2">Location</h1>
-  <p className="text-gray-700 text-center">
-    Revive Auto Studio and Garage, Plot no 11 12, Suffah Colony Rd, opp. Wipro Campus Road, Journalists Colony Phase 3, Phase 3, Gachibowli, Gopanpalle, Hyderabad, Telangana 500075
-  </p>
-</a>
+            {/* Location */}
+            <a
+              href="https://www.google.com/maps?q=Revive+Auto+Studio+and+Garage,+Plot+no+11+12,+Suffah+Colony+Rd,+opp.+Wipro+Campus+Road,+Journalists+Colony+Phase+3,+Phase+3,+Gachibowli,+Gopanpalle,+Hyderabad,+Telangana+500075"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex flex-col justify-center items-center text-center hover:text-blue-600 transition"
+            >
+              <FaMapMarkerAlt className="text-3xl mb-2" />
+              <h1 className="text-xl font-semibold mb-2">Location</h1>
+              <p className="text-gray-700 text-center">
+                Revive Auto Studio and Garage, Plot no 11 12, Suffah Colony Rd, opp. Wipro Campus Road, Journalists Colony Phase 3, Phase 3, Gachibowli, Gopanpalle, Hyderabad, Telangana 500075
+              </p>
+            </a>
 
-    {/* Contact Support */}
-    <div className="flex flex-col justify-center items-center">
-      <FaPhoneAlt className="text-3xl mb-2" /> {/* increased size */}
-      <h1 className="text-xl font-semibold mb-2">Contact Support</h1>
-      <div className="flex flex-col space-y-2 justify-center items-center">
-          {/* <a href="https://share.google/8iGTOfYnibzGhWByl" className="text-blue-600 hover:text-blue-900 mb-2">https://share.google/8iGTOfYnibzGhWByl</a> */}
-        <a href="mailto:info@revive-auto.in" className="flex items-center text-red-600 hover:underline">
-          info@revive-auto.in
-        </a>
-        <a href="tel:+917382661199" className="flex items-center text-red-600 hover:underline">
-          +91-7382661199
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
+            {/* Contact Support */}
+            <div className="flex flex-col justify-center items-center">
+              <FaPhoneAlt className="text-3xl mb-2" /> {/* increased size */}
+              <h1 className="text-xl font-semibold mb-2">Contact Support</h1>
+              <div className="flex flex-col space-y-2 justify-center items-center">
+                {/* <a href="https://share.google/8iGTOfYnibzGhWByl" className="text-blue-600 hover:text-blue-900 mb-2">https://share.google/8iGTOfYnibzGhWByl</a> */}
+                <a href="mailto:info@revive-auto.in" className="flex items-center text-red-600 hover:underline">
+                  info@revive-auto.in
+                </a>
+                <a href="tel:+917382661199" className="flex items-center text-red-600 hover:underline">
+                  +91-7382661199
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
 
 
         {/* // Booking  */}
@@ -1382,15 +1384,15 @@ useEffect(() => {
                 selling, or servicing a car, we’re here to provide quick and
                 reliable solutions.
               </p>
-       <h3 className="text-3xl font-semibold mb-2 md:block hidden">Location</h3>
-  <a 
-    href="https://www.google.com/maps?q=Revive+Auto+Studio+and+Garage,+Plot+no+11+12,+Suffah+Colony+Rd,+opp.+Wipro+Campus+Road,+Journalists+Colony+Phase+3,+Gachibowli,+Hyderabad,+Telangana+500075"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="text-gray-700 hover:text-red-600 md:block hidden mb-9 hover:underline transition"
-  >
-    Revive Auto Studio and Garage, Plot no 11 12, Suffah Colony Rd, opp. Wipro Campus Road, Journalists Colony Phase 3, Phase 3, Gachibowli, Gopanpalle, Hyderabad, Telangana 500075.
-  </a>
+              <h3 className="text-3xl font-semibold mb-2 md:block hidden">Location</h3>
+              <a
+                href="https://www.google.com/maps?q=Revive+Auto+Studio+and+Garage,+Plot+no+11+12,+Suffah+Colony+Rd,+opp.+Wipro+Campus+Road,+Journalists+Colony+Phase+3,+Gachibowli,+Hyderabad,+Telangana+500075"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-700 hover:text-red-600 md:block hidden mb-9 hover:underline transition"
+              >
+                Revive Auto Studio and Garage, Plot no 11 12, Suffah Colony Rd, opp. Wipro Campus Road, Journalists Colony Phase 3, Phase 3, Gachibowli, Gopanpalle, Hyderabad, Telangana 500075.
+              </a>
 
               <h3 className="text-2xl font-semibold mb-2 md:block hidden">
                 Contact
@@ -1551,7 +1553,7 @@ useEffect(() => {
           </div>
         </section>
 
-   
+
       </main>
     </>
   );

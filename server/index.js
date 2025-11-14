@@ -6,6 +6,7 @@ require("dotenv").config();
 const contactRouter=require('./App/Route/contact.route');
 app.use(cors({
   origin: "https://revive-studio-shivanshu.vercel.app", 
+
   methods: ["GET", "POST", "PUT", "DELETE"],
 }));
 

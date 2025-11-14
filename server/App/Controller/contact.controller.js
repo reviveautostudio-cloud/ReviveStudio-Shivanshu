@@ -1,10 +1,8 @@
 const contactModel = require("../Model/contact.model");
 const nodemailer = require("nodemailer");
 
-// Util: Basic email format checker
+// Utils
 const isValidEmail = (email) => /\S+@\S+\.\S+/.test(email);
-
-// Util: Basic phone format checker (10-15 digits)
 const isValidPhone = (phone) => /^[0-9]{10,15}$/.test(phone);
 
 const insertUser = async (req, res) => {
@@ -37,21 +35,19 @@ const insertUser = async (req, res) => {
 
     await contactUser.save();
 
-    res.status(200).json({ msg: "Contact saved. Email will be sent shortly.", contactUser });
-
-    // Nodemailer Setup -> Async Email Sending for better performance (As you said it takes 8 sec)
+    // Nodemailer setup
     const transporter = nodemailer.createTransport({
-      service: "gmail", 
+      service: "gmail",
       auth: {
-        user: process.env.MY_EMAIL, 
-        pass: process.env.MY_PASS, 
+        user: process.env.MY_EMAIL,
+        pass: process.env.MY_PASS,
       },
     });
 
     const mailOptions = {
-      from:email,
+      from: `"Revive AutoCare" <${process.env.MY_EMAIL}>`,
       to: "reviveautostudio@gmail.com",
-      subject: "Contact Form Received",
+      subject: `New Contact Form Submission - ${service}`,
       html: `
         <h3>Hello ${name},</h3>
         <p>Thank you for contacting <strong>Revive</strong>. Here are your submitted details:</p>
@@ -66,12 +62,23 @@ const insertUser = async (req, res) => {
       `,
     };
 
-    transporter.sendMail(mailOptions).catch((err) => {
-      console.error("Email sending failed:", err);
-    });
-
-    // Response
-    // res.status(200).json({ msg: "Contact saved and email sent.", contactUser });
+    // Wait for email sending to finish
+    try {
+      const info = await transporter.sendMail(mailOptions);
+      console.log("Email sent successfully:", info.response);
+      return res.status(201).json({ 
+        msg: "Message submitted successfully and email sent.",
+        emailInfo: info.response,
+        contactUser
+      });
+    } catch (err) {
+      console.error("Error sending email:", err);
+      return res.status(500).json({ 
+        msg: "Message saved but failed to send email.",
+        details: err.message,
+        contactUser
+      });
+    }
 
   } catch (error) {
     console.error("Server Error:", error);
