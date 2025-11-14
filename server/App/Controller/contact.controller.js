@@ -50,7 +50,7 @@ const insertUser = async (req, res) => {
 
     const mailOptions = {
       from:email,
-      to: `"Revive AutoCare" <${process.env.MY_EMAIL}>`,
+      to: "reviveautostudio@gmail.com",
       subject: "Contact Form Received",
       html: `
         <h3>Hello ${name},</h3>
